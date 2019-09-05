@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
 
 export default class HelloWorld extends Component {
 
@@ -18,14 +18,23 @@ export default class HelloWorld extends Component {
   }
 
   render() {
-    console.log(this.state.charities)
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ScrollView containerStyle={styles.container}>
       {this.state.charities.map(charity => {
         return <Text>{charity.charityName}</Text>
       })}
         <Text>Hello, world!</Text>
-      </View>
+      </ScrollView>
     );
   }
 }
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 20,
+    },
+  });

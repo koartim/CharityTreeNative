@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, ScrollView } from 'react-native';
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 export default class HelloWorld extends Component {
 
@@ -8,24 +9,38 @@ export default class HelloWorld extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.data.charitynavigator.org/v2/Organizations?categoryID=6&app_id=b01bcc4b&app_key=0acb4a18c3b6fba8b293612eb0a029f5")
+    fetch("http://localhost:3000/api/v1/charities")
       .then(rsp => rsp.json())
       .then(rsp => {
         this.setState({
           charities: rsp
         })
-      })
+      }).catch(function(error) {
+        console.log('there has been an error in your fetch operation:' + error.message);
+      });
   }
 
   render() {
-    console.log(this.state.charities)
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ScrollView containerStyle={styles.container}>
       {this.state.charities.map(charity => {
-        return <Text>{charity.charityName}</Text>
+        return(
+          <Card>
+          <ListItem>{charity.charityName}</ListItem>
+          </Card>
+        )
       })}
-        <Text>Hello, world!</Text>
-      </View>
+      </ScrollView>
     );
   }
 }
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 20,
+    },
+  });

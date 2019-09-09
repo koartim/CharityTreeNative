@@ -10,7 +10,12 @@
   "dependencies": {
     "react": "16.8.6",
     "react-native": "0.60.5",
+<<<<<<< HEAD
     "react-native-elements": "^1.2.0"
+=======
+    "react-native-card-ui": "^1.1.1",
+    "react-native-loading-spinner-overlay": "^1.0.1"
+>>>>>>> 1a170d3acdc36bb0712799ed20a7aefcd9e30b76
   },
   "devDependencies": {
     "@babel/core": "7.5.5",

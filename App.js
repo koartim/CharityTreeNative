@@ -7,7 +7,7 @@
  */
 
 import React, {Fragment} from 'react';
-import HelloWorld from './HelloWorld'
+import AllCharities from './AllCharities'
 import {
   SafeAreaView,
   StyleSheet,
@@ -28,7 +28,7 @@ import {
 class App extends React.Component {
   render() {
     return (
-      <HelloWorld />
+      <AllCharities />
     );
   }
 };

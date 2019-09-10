@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux'
 import { StyleSheet, Text, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
-export default class HelloWorld extends Component {
+class AllCharities extends React.Component {
 
   state = {
     charities: []
@@ -26,7 +27,7 @@ export default class HelloWorld extends Component {
       {this.state.charities.map(charity => {
         return(
           <Card>
-          <Text>{charity.charityName}</Text>
+            <Text>{charity.charityName}</Text>
           </Card>
         )
       })}
@@ -44,3 +45,18 @@ export default class HelloWorld extends Component {
       paddingVertical: 20,
     },
   });
+  function mapStateToProps(state) {
+    return {
+      charities: state.charities
+    }
+  }
+
+  function mapDispatchToProps(state) {
+    return {
+      fetchCharities: (charities) => {
+        dispatch({type: "FETCH_ALL_CHARITIES", payload: charities})
+      }
+    }
+  }
+
+  export default connect (mapStateToProps, mapDispatchToProps)(AllCharities);

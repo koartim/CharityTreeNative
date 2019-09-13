@@ -5,14 +5,18 @@ import { Card, ListItem, Button, Header } from 'react-native-elements'
 class CharityCard extends React.Component {
 
   render() {
+    console.log(this.props)
     let pic = {
       uri: this.props.charity.cause.image
+    }
+    let ratingImage = {
+      uri: this.props.charity.currentRating.ratingImage.large
     }
       return(
         <ScrollView style={styles.container}>
           <Card>
             <Text style={styles.titleText}>{this.props.charity.charityName}</Text>
-            <Image source={pic} style={{width: 75, height: 75}}/>
+            <Image source={ratingImage} style={{width: 100, height: 25}}/>
             <Button title="view"></Button>
           </Card>
         </ScrollView>

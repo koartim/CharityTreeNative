@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import { StyleSheet, Text, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import CharityCard from './CharityCard'
 
 class AllCharities extends React.Component {
 
@@ -26,9 +26,7 @@ class AllCharities extends React.Component {
       <ScrollView containerStyle={styles.container}>
       {this.state.charities.map(charity => {
         return(
-          <Card>
-            <Text>{charity.charityName}</Text>
-          </Card>
+          <CharityCard charity={charity} key={charity.name}/>
         )
       })}
       </ScrollView>
@@ -45,18 +43,5 @@ class AllCharities extends React.Component {
       paddingVertical: 20,
     },
   });
-  function mapStateToProps(state) {
-    return {
-      charities: state.charities
-    }
-  }
 
-  function mapDispatchToProps(state) {
-    return {
-      fetchCharities: (charities) => {
-        dispatch({type: "FETCH_ALL_CHARITIES", payload: charities})
-      }
-    }
-  }
-
-  export default connect (mapStateToProps, mapDispatchToProps)(AllCharities);
+  export default AllCharities;

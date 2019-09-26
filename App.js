@@ -6,8 +6,10 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
+import React from 'react';
 import AllCharities from './AllCharities'
+import { createStore, combineReducers } from 'redux'
+import { Router, Route, Link } from "react-router-dom"
 import {
   SafeAreaView,
   StyleSheet,

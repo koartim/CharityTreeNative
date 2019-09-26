@@ -13,6 +13,7 @@ class CharityCard extends React.Component {
       uri: this.props.charity.currentRating.ratingImage.large
     }
       return(
+        <Router>
         <ScrollView style={styles.container}>
           <Card>
             <Text style={styles.titleText}>{this.props.charity.charityName}</Text>
@@ -20,6 +21,7 @@ class CharityCard extends React.Component {
             <Button title="view"></Button>
           </Card>
         </ScrollView>
+        </Router>
       )
   }
 }

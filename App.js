@@ -1,19 +1,20 @@
 import React from 'react';
 import AllCharities from './AllCharities'
-import store from './src/store'
-import { Provider } from 'react-redux'
 import {SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
+import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
-import {
-  Header,
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+const rootReducer = (state = {}, action) => {
+  return state
+}
+const store = createStore(rootReducer)
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-      <AllCharities/>
+        <AllCharities/>
       </Provider>
     );
   }

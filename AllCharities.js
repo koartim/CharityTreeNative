@@ -24,7 +24,7 @@ class AllCharities extends React.Component {
     console.log(this.props)
     return (
       <ScrollView containerStyle={styles.container}>
-      {this.state.charities.map(charity => {
+      {this.props.charities.map(charity => {
         return(
           <CharityCard charity={charity} key={charity.name}/>
         )

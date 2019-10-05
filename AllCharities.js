@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 import CharityCard from './CharityCard'
+import { connect } from 'react-redux'
 
 class AllCharities extends React.Component {
 
@@ -13,15 +14,14 @@ class AllCharities extends React.Component {
     fetch("http://localhost:3000/api/v1/charities")
       .then(rsp => rsp.json())
       .then(rsp => {
-        this.setState({
-          charities: rsp
-        })
+        this.props.fetchCharities(rsp)
       }).catch(function(error) {
         console.log('there has been an error in your fetch operation:' + error.message);
       });
   }
 
   render() {
+    console.log(this.props)
     return (
       <ScrollView containerStyle={styles.container}>
       {this.state.charities.map(charity => {
@@ -34,6 +34,22 @@ class AllCharities extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    charities: state.charities
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchCharities: (charities) => {
+      dispatch({type: "FETCH_ALL_CHARITIES", payload: charities})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (AllCharities);
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -43,5 +59,3 @@ class AllCharities extends React.Component {
       paddingVertical: 20,
     },
   });
-
-  export default AllCharities;

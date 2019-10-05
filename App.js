@@ -4,11 +4,9 @@ import {SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'reac
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import reducer from './reducer'
 
-const rootReducer = (state = {}, action) => {
-  return state
-}
-const store = createStore(rootReducer)
+const store = createStore(reducer)
 
 class App extends React.Component {
   render() {

@@ -6,10 +6,6 @@ import { connect } from 'react-redux'
 
 class AllCharities extends React.Component {
 
-  state = {
-    charities: []
-  }
-
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/charities")
       .then(rsp => rsp.json())

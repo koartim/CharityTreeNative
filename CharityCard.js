@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 import { Card, ListItem, Button, Header } from 'react-native-elements'
+import {connect} from 'react-redux'
 
 class CharityCard extends React.Component {
 
@@ -17,7 +18,7 @@ class CharityCard extends React.Component {
           <Card>
             <Text style={styles.titleText}>{this.props.charity.charityName}</Text>
             <Image source={ratingImage} style={{width: 100, height: 25}}/>
-            <Button title="view"></Button>
+            <Button title="view" />
           </Card>
         </ScrollView>
       )
